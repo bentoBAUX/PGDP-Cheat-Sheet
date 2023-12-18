@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class CheatSheet {
 
+    //ÜPA 1
     public static void print(int[] a){
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i]);
@@ -101,14 +102,11 @@ public class CheatSheet {
         return true;
     }
 
-    public static long factorial(long n, long k) {
-        // TODO
-        //permutation=(factorial(n)/factorial(k));
+    public static long factorial(long n) {
         double factorial =1;
         for (int i = 2; i <=n ; i++) {
             factorial=factorial*i;
         }
-
         return (long)(factorial);
     }
 
@@ -208,6 +206,137 @@ public class CheatSheet {
         return max;
     }
 
+    //ÜPA 2
+    public static int[] mergeSort(int[] array) {
+
+        int length = array.length/2;
+        int[] leftArray = new int[array.length-length];
+        int[] rightArray = new int[length];
+
+        if(array.length<2){
+            return array;
+        }
+
+        for (int i = 0; i < leftArray.length; i++) {
+            leftArray[i]=array[i];
+
+        }
+
+        for (int i = 0; i < rightArray.length; i++) {
+            rightArray[i]=array[i+leftArray.length];
+        }
+
+        leftArray=mergeSort(leftArray);
+        rightArray=mergeSort(rightArray);
+
+
+
+
+        return mergeTwoArraysSorted(leftArray,rightArray);
+    }
+
+    public static int[] mergeTwoArraysSorted(int[] arr1, int[] arr2) {
+        int i = 0, j=0, k=0;
+        int[] mergedArray = new int[arr1.length+ arr2.length];
+
+        while(i<arr1.length && j<arr2.length){
+            if(arr1[i]<arr2[j]){
+                mergedArray[k++] = arr1[i++];
+            }else{
+                mergedArray[k++] = arr2[j++];
+            }
+        }
+
+        while(i<arr1.length){
+            mergedArray[k++]=arr1[i++];
+        }
+
+        while(j<arr2.length){
+            mergedArray[k++]=arr2[j++];
+        }
+
+        return mergedArray;
+    }
+
+    protected static int[] merge2DArray(int[][] arrays, int from, int to) {
+        if(to-from< 1){
+            return new int[0];
+        }
+        if(to-from==1){
+            return arrays[from];
+        }
+        return mergeTwoArraysSorted(arrays[from],merge2DArray(arrays,from+1,to));
+    }
+
+    public static long binomCoeffIterative(int n, int k) {
+        if (k == 0 || n == k) {
+            return 1;
+        }
+        if (k > n) {
+            return 0;
+        }
+
+
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result *= n + 1 - i;
+            result /= i;
+        }
+        return result;
+    }
+
+    public static long binomCoeffRecursive(int n, int k) {
+        if (k == 0 || n == k) {
+            return 1;
+        }
+        if (k > n) {
+            return 0;
+        }
+
+        return binomCoeffRecursive(n-1,k-1)+binomCoeffRecursive(n-1,k);
+    }
+
+    public static long fibonacciIterative(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        long last = 1;
+        long current = 0;
+        long tmp;
+        for (int i = 0; i < n; i++) {
+            tmp = last + current;
+            last = current;
+            current = tmp;
+        }
+        return current;
+    }
+
+    public static long fibonacciRecursive(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        if(n==1){
+            return 1;
+        }
+        return fibonacciRecursive(n-1)+fibonacciRecursive(n-2);
+
+    }
+
+    public static void gnomeSort(int[] a) {
+        // TODO: implement gnome sort
+        int pos = 0;
+        while( pos < a.length){
+            if(pos==0||a[pos]>=a[pos-1]){
+                pos++;
+            }else{
+                int temp = a[pos];
+                a[pos] = a[pos-1];
+                a[pos-1]=temp;
+                pos--;
+                gnomeSort(a);
+            }
+        }
+    }
 
 
 
