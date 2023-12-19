@@ -338,6 +338,33 @@ public class CheatSheet {
         }
     }
 
+    public static void stoogeSort(int[] array) {
+        stoogeSort(array, 0, array.length);
+    }
+
+    public static void stoogeSort(int[] array, int from, int to) {
+        int length = to -from;
+        if(length==2){
+            if(array[from]>array[from+1]){
+                int temp = array[from];
+                array[from] = array[from+1];
+                array[from+1]=temp;
+
+            }else{
+                return;
+            }
+        }
+
+        if(length<2){
+            return;
+        }
+
+        stoogeSort(array,from, to-(length/3));
+        stoogeSort(array,from+(length/3),to);
+        stoogeSort(array,from, to-(length/3));
+
+    }
+
 
 
 
