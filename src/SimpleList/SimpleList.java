@@ -1,3 +1,5 @@
+package SimpleList;
+
 public class SimpleList {
 
     private Element head;

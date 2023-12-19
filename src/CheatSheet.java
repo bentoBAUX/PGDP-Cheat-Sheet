@@ -365,7 +365,42 @@ public class CheatSheet {
 
     }
 
+    public static void selectionSortRec(int[] a) {
+        selectionSortRec(a, a.length - 1);
+    }
 
+    public static void selectionSortRec(int[] a, int toIncl) {
+        if(toIncl<=0){
+            return;
+        }
+        //swap max index with last index
+        int maxIndex = findIndexOfLargest(a,toIncl);
+        swap(a,maxIndex,toIncl);
+        selectionSortRec(a,toIncl-1);
+
+    }
+
+    public static int findIndexOfLargest(int[] a, int toIncl) {
+        if(toIncl == 0) {
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int maxIndex=0;
+        for (int i = 0; i <=toIncl; i++) {
+            if(a[i]>max){
+                max=a[i];
+                maxIndex=i;
+            }
+        }
+        //System.out.println(max);
+        return maxIndex;
+    }
+
+    public static void swap(int[] array, int firstPos, int secondPos) {
+        int temp = array[firstPos];
+        array[firstPos] = array[secondPos];
+        array[secondPos]=temp;
+    }
 
 
 
