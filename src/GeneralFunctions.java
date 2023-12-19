@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
+import java.lang.reflect.Array;
+import java.util.*;
 
 
-public class CheatSheet {
+public class GeneralFunctions {
 
     //ÜPA 1
     public static void print(int[] a){
@@ -402,6 +401,59 @@ public class CheatSheet {
         array[secondPos]=temp;
     }
 
+    //finds common items within arrays of collections using HashSet
+    public static <T> Collection<T> intersection(Collection<T>[] collections) {
+        Set<T> set = new HashSet<>();
+        for(final Collection<T> c:collections){
+            set.addAll(c);
+            break;
+        }
+        for (final Collection<T> c : collections) {
+            if (set.isEmpty()) {
+                break;
+            }
+            set.retainAll(c);
+        }
+        return set;
+    }
 
+    //returns a string representaion of a collection
+    public static String toString(Collection<?> collection) {
 
+        if(collection.isEmpty()){
+            return "{}";
+        }
+        StringBuilder sb = new StringBuilder();
+        Iterator<?> itr = collection.iterator();
+        while(itr.hasNext()){
+            sb.append(itr.next()+", ");
+        }
+        sb.setLength(sb.length()-2); //remove the last ", "
+        return "{"+sb.toString()+"}";
+    }
+
+    //generates an array of generic type
+    @SuppressWarnings("unchecked")
+    public static <T> T[] generateGenericArray(Class<T> clazz, int length) {
+        final T[] arr = (T[]) Array.newInstance(clazz, length);
+        return arr;
+    }
+
+    //returns a collection in a sorted array
+    public static <T> T[] specialSort(Class<T> clazz, Collection<T> collection, Comparator<T> comparator) {
+
+        T[] arr= generateGenericArray(clazz,collection.size());
+        arr=collection.toArray(arr);
+        Arrays.sort(arr,comparator);
+        return arr;
+    }
+
+    //stores values of a map in a HashSet
+    public static <K, V> Set<V> storeValues(Map<K, V> map) {
+        final Set<V> set = new HashSet<>();
+        for(final Map.Entry<K,V> e: map.entrySet()){
+            set.add(e.getValue());
+        }
+        return set;
+    }
 }
