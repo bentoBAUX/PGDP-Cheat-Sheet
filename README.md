@@ -1,0 +1,1 @@
+Hey Penguins, feel free to use my cheat sheet for your Praktikum: Grundlagen der Programmierung (PGDP) exam. Just be sure to provide the link to this repository in your code during the Übungprasenzaufgaben, should you use a code from my cheatsheet. The examiners require you to do that.
