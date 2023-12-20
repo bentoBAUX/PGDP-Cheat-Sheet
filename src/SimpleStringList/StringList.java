@@ -93,7 +93,6 @@ public class StringList {
                     holder = index;
                 }
                 index++;
-
             }
             current=current.getNext();
         }

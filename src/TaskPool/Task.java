@@ -1,7 +1,27 @@
 package TaskPool;
 
-public class Task<T,R> {
+import java.util.Objects;
 
-    //just a dummy, not the point of the cheat sheet
+public class Task<T> {
 
+    private final int ID;
+    private static int IDCounter=0;
+    private String name;
+    public Task(String name) {
+       ID = IDCounter++;
+       this.name=name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int hashCode() {
+        return ID;
+    }
+
+    public int getID() {
+        return ID;
+    }
 }

@@ -22,7 +22,7 @@ public class Queue {
             last = null;
         }
         first = first.getNext();
-
+        size--;
         return result;
     }
 

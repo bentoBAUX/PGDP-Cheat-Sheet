@@ -1,6 +1,6 @@
 package DoublyLinkedList;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList <T>{
     private DoublyLinkedListElement head;
     private DoublyLinkedListElement tail;
     private int size;
@@ -10,8 +10,8 @@ public class DoublyLinkedList {
         tail = null;
         size = 0;
     }
-    public void append(int info){
-        DoublyLinkedListElement newElement = new DoublyLinkedListElement(info);
+    public <T> void append(T info){
+        DoublyLinkedListElement <T>newElement = new DoublyLinkedListElement<T>(info);
         if(size==0){
             head = newElement;
             tail = newElement;
@@ -39,13 +39,13 @@ public class DoublyLinkedList {
         }
     }
 
-    public int get(int index){
+    public T get(int index){
         if (index < 0 || index>=size) {
             System.out.println("Position ist größer als Liste!");
-            return 0;
+            return null;
         }
 
-        return getElement(index).getInfo();
+        return (T) getElement(index).getInfo();
     }
 
     public void remove(int index){
@@ -116,13 +116,13 @@ public class DoublyLinkedList {
         return equal;
     }
 
-    public int sum(){
+    /*public int sum(){
         int sum = 0;
         for (int i = 0; i < size; i++) {
             sum+=getElement(i).getInfo();
         }
         return sum;
-    }
+    }*/
 
     public DoublyLinkedList copy(){
         DoublyLinkedList copyList = new DoublyLinkedList();

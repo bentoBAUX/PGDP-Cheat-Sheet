@@ -1,11 +1,11 @@
 package Dequeue;
 
-public class Dequeue {
+public class Deque {
     private Element head;
     private Element tail;
     private int size;
 
-    public Dequeue() {
+    public Deque() {
         head = null;
         tail = null;
         size = 0;

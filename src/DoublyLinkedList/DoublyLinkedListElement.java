@@ -1,17 +1,17 @@
 package DoublyLinkedList;
 
-public class DoublyLinkedListElement{
+public class DoublyLinkedListElement<T>{
 
-    private int info;
+    private T info;
     public DoublyLinkedListElement next;
     public DoublyLinkedListElement prev;
 
-    public DoublyLinkedListElement(int info){
+    public DoublyLinkedListElement(T info){
         this.info = info;
 
     }
 
-    public int getInfo() {
+    public T getInfo() {
         return info;
     }
 }

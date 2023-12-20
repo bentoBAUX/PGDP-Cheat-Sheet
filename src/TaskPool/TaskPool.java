@@ -3,15 +3,15 @@ package TaskPool;
 
 import java.util.HashMap;
 
-public class TaskPool<T, R> {
+public class TaskPool<T> {
 
-    private final HashMap<Integer, Task<T, R>> taskPool;
+    private final HashMap<Integer, Task<T>> taskPool;
 
     protected TaskPool() {
-        taskPool = new HashMap<Integer, Task<T, R>>();
+        taskPool = new HashMap<Integer, Task<T>>();
     }
 
-    public Task<T, R> insert(Task<T, R> task) {
+    public Task<T> insert(Task<T> task) {
         if (taskPool.containsValue(task)) {
             return taskPool.get(task.hashCode());
         }
@@ -19,8 +19,12 @@ public class TaskPool<T, R> {
         return task;
     }
 
-    public Task<T, R> getByValue(T input) {
-        Task<T, R> task = new Task<T, R>();
-        return task;
+
+    public void getTaskPool(){
+        for (int name: taskPool.keySet()) {
+            String key = Integer.toString(name);
+            String value = taskPool.get(name).toString();
+            System.out.println(key + ", " + value);
+        }
     }
 }
