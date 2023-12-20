@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GeneralFunctions {
 
-    //ÜPA 1
+    //region ÜPA 1
     public static void print(int[] a){
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i]);
@@ -70,21 +70,14 @@ public class GeneralFunctions {
         }
     }
 
-    public static int IntToArray(int integer) {
-        // https://stackoverflow.com/questions/8033550/convert-an-integer-to-an-array-of-digits
-        int sum=0;
-        int remainder=0;
-        List<Integer> integerList = new ArrayList<>();
-        while(integer>0){
-            remainder = integer%10;
-            integer/=10;
-            integerList.add(remainder);
+    public static int[] IntToArray(int integer) {
+        String temp = Integer.toString(integer);
+        int[] intArray = new int[temp.length()];
+        for (int i = 0; i < temp.length(); i++)
+        {
+            intArray[i] = temp.charAt(i) - '0';
         }
-        int[] numArray = integerList.stream().mapToInt(x->x).toArray();
-        for (int i = 0; i < numArray.length; i++) {
-            sum+=numArray[i];
-        }
-        return sum;
+        return intArray;
     }
 
     private static boolean isPowerOfTwo(int n){
@@ -204,8 +197,9 @@ public class GeneralFunctions {
         }
         return max;
     }
+    //endregion
 
-    //ÜPA 2
+    //region ÜPA 2
     public static int[] mergeSort(int[] array) {
 
         int length = array.length/2;
@@ -337,6 +331,28 @@ public class GeneralFunctions {
         }
     }
 
+    public static void bubbleSort(int arr[], int n) {
+        int i, j, temp;
+        boolean swapped;
+        for (i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap arr[j] and arr[j+1]
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // If no two elements were
+            // swapped by inner loop, then break
+            if (swapped == false)
+                break;
+        }
+    }
+
     public static void stoogeSort(int[] array) {
         stoogeSort(array, 0, array.length);
     }
@@ -457,5 +473,6 @@ public class GeneralFunctions {
         return set;
     }
 
+    //endregion
 
 }
