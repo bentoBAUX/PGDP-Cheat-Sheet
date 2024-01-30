@@ -1,0 +1,2 @@
+Hello, Buffered Writer
+This is a simple demo
