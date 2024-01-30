@@ -475,4 +475,23 @@ public class GeneralFunctions {
 
     //endregion
 
+    //region ÜPA 3
+
+    public static void splitArrayAmongThreads(int[] array, int threadCount) {
+        int stepSize = array.length / threadCount;
+        int modulus = array.length % threadCount;
+
+        //ParallelSummer[] threads = new ParallelSummer[threadCount];
+        int currentLowerBound = 0;
+        for (int i = 0; i < threadCount; i++) {
+            int amountToSum = stepSize;
+            if (i < modulus) {
+                amountToSum++;
+            }
+            //threads[i] = new ParallelSummer(array, currentLowerBound, currentLowerBound + amountToSum);
+            currentLowerBound += amountToSum;
+        }
+    }
+
+
 }

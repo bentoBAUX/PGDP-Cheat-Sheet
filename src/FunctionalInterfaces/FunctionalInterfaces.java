@@ -1,5 +1,6 @@
-package IO;
+package FunctionalInterfaces;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -12,9 +13,15 @@ public class FunctionalInterfaces {
         Function<Integer, Integer> addTwo = x->x+2; //<Integer, Integer> = Integer parameter & Integer return
         Function<Integer, Integer> multThree = x->x*3; //<Integer, Integer> = Integer parameter & Integer return
 
+        System.out.println();
         System.out.println("add Two apply" + addTwo.apply(4));
         System.out.println("addTwo and then multThree" + addTwo.andThen(multThree).apply(4));
         System.out.println("addTwo compose multThree" + addTwo.compose(multThree).apply(4)+"\n");
+
+        List<Integer> listInt = List.of(1,2,3,4);
+        for(Integer a:listInt){
+            System.out.println(addTwo.apply(a));
+        }
 
         List<String> students = List.of("Peter","Paul","Marie");
         Consumer<String> swem = s -> System.out.println(s+"!"); //Takes in a parameter of specified type but doesn't return anything
